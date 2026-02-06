@@ -34,6 +34,13 @@ p {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
+  font-size: 2rem;
+}
+.title-font{
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
   font-size: 3rem;
 }
 .secondary-font {
@@ -215,7 +222,7 @@ button:hover {
 .news-letter-container {
   position: relative;
   isolation: isolate;
-  width: 100%;
+  width: 90%;
   height: 600px;
   color: var(--text);
   padding: 20px;
@@ -236,7 +243,7 @@ button:hover {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.22;
+  opacity: .8;
   filter: blur(1.25px);
   transform: scale(1.03);
   z-index: 0;
@@ -288,7 +295,7 @@ button:hover {
 }
 
 footer {
-  width: 100%;
+  width: 90%;
   /* position: fixed; */
   margin-top: 50px;
   bottom: 0;
