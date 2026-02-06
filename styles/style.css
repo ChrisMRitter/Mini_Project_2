@@ -224,7 +224,7 @@ button:hover {
 
 .news-letter-container {
   position: relative;
-  margin-left: -80px;
+  margin-left: -40px;
   margin-top: 60px;
   isolation: isolate;
   width: 90%;
@@ -306,7 +306,7 @@ footer {
   width: 90%;
   /* position: fixed; */
   margin-top: 50px;
-  margin-left: -80px;
+  margin-left: -40px;
   bottom: 0;
   z-index: 999;
   display: grid;
