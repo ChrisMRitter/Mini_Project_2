@@ -1,10 +1,12 @@
 # mini-project-01-spring2026
 
-# FAUGEI: A Local Flower Shop
+# Steamé : The Luxury Gaming Destination
+## Brandon Foshe and Chris Ritter
+## Code adapted from Prof. Hamid's flower shop static site
 
 ## Live link:
 
-- https://faugei-flowershop-spring2026.netlify.app/
+- [steamee.netlify.app](https://steamee.netlify.app/)
 
 ## A static page built with pure html and CSS
 
