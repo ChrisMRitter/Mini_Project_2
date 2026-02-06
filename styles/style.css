@@ -34,7 +34,7 @@ p {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 .title-font{
   font-family: "Playfair Display", serif;
@@ -42,6 +42,7 @@ p {
   font-weight: 600;
   font-style: normal;
   font-size: 3rem;
+  margin-left: -80px;
 }
 .secondary-font {
   font-family: "Manrope", sans-serif;
@@ -49,6 +50,7 @@ p {
   font-weight: 400;
   font-style: normal;
   font-size: 1.1rem;
+  margin-left: -40px;
 }
 
 .logo {
@@ -166,6 +168,7 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 160px;
 }
 .cards {
   display: grid;
@@ -221,6 +224,7 @@ button:hover {
 
 .news-letter-container {
   position: relative;
+  margin-left: -80px;
   isolation: isolate;
   width: 90%;
   height: 600px;
@@ -265,6 +269,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   border-bottom: 3px solid var(--special-color);
+  margin-left: -40px;
 }
 
 .brand-container {
@@ -298,6 +303,7 @@ footer {
   width: 90%;
   /* position: fixed; */
   margin-top: 50px;
+  margin-left: -80px;
   bottom: 0;
   z-index: 999;
   display: grid;
