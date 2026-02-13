@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --special-color: #0d00c0;
   --special-color-text: #6f7bff;
@@ -18,17 +22,18 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: full;
+  width: 100%;
   height: auto;
   padding: 20px;
   overflow-x: hidden;
   background-color: var(--bg);
   color: var(--text);
-  /* border: 1px solid black; */
 }
+
 p {
-  line-height: 1.6; /* Sets line spacing to 1.6 times the font size */
+  line-height: 1.6;
 }
+
 .primary-font {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
@@ -36,7 +41,8 @@ p {
   font-style: normal;
   font-size: 3rem;
 }
-.title-font{
+
+.title-font {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -44,6 +50,7 @@ p {
   font-size: 3rem;
   margin-left: -80px;
 }
+
 .secondary-font {
   font-family: "Manrope", sans-serif;
   font-optical-sizing: auto;
@@ -54,28 +61,28 @@ p {
 }
 
 .logo {
-  width: 110px; /* Set your desired width */
-  height: auto; /* Automatically adjusts to prevent distortion */
+  width: 110px;
+  height: auto;
 }
 
 .navbar {
-  position: fixed; /* helps keep the navbar stick to top*/
-  top: 0; /* helps keep the navbar stick to top*/
-  z-index: 999; /* Keeps navbar above other content */
+  position: fixed;
+  top: 0;
+  z-index: 999;
   height: 56px;
-  width: (600px, 90vw);
+  width: min(600px, 90vw);
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: nowrap;
   border-radius: 50px;
   margin: 10px auto;
-  box-shadow: 5px 5px 10px 3px rgb(0, 0, 0); /* h v blur spread color */
+  box-shadow: 5px 5px 10px 3px rgb(0, 0, 0);
   background-color: rgba(36, 48, 74, 0.78);
   backdrop-filter: blur(10px);
 }
 
-.navbar a{
+.navbar a {
   display: flex;
   align-items: center;
   height: 100%;
@@ -87,13 +94,13 @@ p {
   width: 100%;
   padding-top: 10px;
   display: flex;
-  align-items: self-end;
-  justify-content: baseline;
+  align-items: flex-end;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
 .bottom-text {
-  justify-content: flex-end; /* Pushes content to the bottom */
+  justify-content: flex-end;
 }
 
 .special-color {
@@ -101,43 +108,45 @@ p {
 }
 
 .horizontal-menu {
-  display: flex; /* Aligns items in a row */
-  list-style: none; /* Removes bullet points */
-  padding: 0; /* Removes default padding */
-  margin: 0; /* Removes default margin */
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 .vertical-menu {
-  display: flex; /* Aligns items in a col */
+  display: flex;
   flex-direction: column;
-  list-style: none; /* Removes bullet points */
-  padding: 0; /* Removes default padding */
-  margin: 0; /* Removes default margin */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 .vertical-menu a {
-  /* Styles the links as blocks to fill the width */
   display: block;
-  padding: 5px 5px; /* Adds padding inside each menu item */
+  padding: 5px 5px;
   background-color: var(--surface);
   color: var(--text);
-  text-decoration: none; /* Removes default underline */
+  text-decoration: none;
   border-radius: 4px;
 }
 
 .vertical-menu a:hover {
   background-color: rgba(36, 48, 74, 0.92);
 }
+
 .horizontal-menu li {
-  padding: 10px 10px; /* Adds spacing around menu items */
+  padding: 10px 10px;
 }
 
 .vertical-menu li {
-  padding: 3px 3px; /* Adds spacing around menu items */
+  padding: 3px 3px;
   max-width: 200px;
 }
 
 .horizontal-menu a {
   color: var(--text);
-  text-decoration: none; /* Removes underlines */
+  text-decoration: none;
   font-size: 1.1rem;
   font-weight: 600;
 }
@@ -150,7 +159,7 @@ p {
   margin: 10px auto;
   display: grid;
   max-width: 90%;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-template-columns: 1fr 1fr;
   justify-items: flex-end;
   align-items: center;
   gap: 40px;
@@ -170,6 +179,7 @@ p {
   align-items: center;
   margin-left: 160px;
 }
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -178,6 +188,8 @@ p {
 }
 
 .card {
+  cursor: pointer;
+  justify-content: center;
   background-color: var(--surface);
   margin: 5px;
   padding: 10px;
@@ -187,39 +199,219 @@ p {
     0 6px 20px rgb(0, 0, 0);
   color: var(--text);
 }
-.card img {
-  /* Essential image styles */
-  width: 400px; /* Image takes the full width of the card container */
-  height: 200px; /* Example fixed height for uniform cards */
-  object-fit: cover; /* Crops the image to cover the area while maintaining aspect ratio */
 
-  /* Optional: Round the top corners of the image to match the card */
+.card img {
+  width: 400px;
+  height: 200px;
+  object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
 
+.card--expanded {
+  cursor: default;
+}
+
+.card__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border-radius: 5px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.card--expanded .card__content {
+  padding-top: 100px;
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: auto;
+}
+
+.card__user-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  will-change: transform;
+  transform-origin: 0 0;
+}
+
+.card--expanded .card__user-image {
+  width: 100px;
+  height: 100px;
+}
+
+.card__images {
+  display: grid;
+  gap: 10px;
+  max-width: 800px;
+  width: 100%;
+  margin: 50px auto 0;
+  transform-origin: 0 0;
+  position: absolute;
+  top: 100%;
+}
+
+.card--expanded .card__images {
+  position: static;
+}
+
+.card__image {
+  border-radius: 5px;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  transform-origin: 0 0;
+  line-height: 1;
+}
+
+.card--expanded .card__title {
+  font-size: 30px;
+}
+
+.card__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px 14px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.card--expanded .card__header {
+  flex-direction: row;
+}
+
+.card__user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card--expanded .card__user-info {
+  align-items: flex-start;
+  gap: 2px 0;
+}
+
+.card__subtitle {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.card__user-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0 14px;
+}
+
+.card--expanded .card__user-links {
+  position: static;
+  opacity: 1;
+  height: auto;
+  margin-top: 5px;
+  pointer-events: all;
+}
+
+.card__user-link {
+  display: flex;
+}
+
+.card__user-link-icon {
+  fill: currentColor;
+  color: white;
+  width: 20px;
+}
+
+.card__bio {
+  opacity: 0;
+  height: 0;
+  transform-origin: 0 0;
+}
+
+.card--expanded .card__bio {
+  max-width: 800px;
+  margin: 20px auto 0;
+  opacity: 1;
+  height: auto;
+}
+
+.card__close {
+  position: absolute;
+  right: -40px;
+  top: 20px;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  color: white;
+  padding: 10px;
+}
+
+.card--expanded .card__close {
+  transition: 0.3s all ease;
+  transition-delay: 0.3s;
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-100%) translateX(-20px);
+}
+
+.card--animatable .card__user-image,
+.card--animatable .card__title,
+.card--animatable .card__subtitle,
+.card--animatable .card__user-links,
+.card--animatable .card__bio,
+.card--animatable .card__images,
+.card--animatable .card__content {
+  transition: all 0.5s cubic-bezier(0, 0, 0.21, 1);
+}
+
 button {
-  display: inline-block; /* Allows padding and margin, and keeps it inline */
-  padding: 10px 10px; /* Space between text and border (top/bottom, left/right) */
-  text-align: center; /* Center the text */
-  text-decoration: none; /* Remove underlines from <a> tags */
-
-  /* Color and background */
+  display: inline-block;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
   background-color: var(--special-color);
-  color: white; /* White text color */
-
-  /* Font and appearance */
-  font-size: 16px; /* Increase font size */
-  cursor: pointer; /* Change mouse cursor to a hand on hover */
-  border: none; /* Remove default border */
-  border-radius: 8px; /* Rounded corners */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  /* Hover effect: changes background color when the user hovers over the button */
-
-  background-color: #1f12ff; /* A different color on hover */
+  background-color: #1f12ff;
 }
 
 .news-letter-container {
@@ -248,7 +440,7 @@ button:hover {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: .8;
+  opacity: 0.8;
   filter: blur(1.25px);
   transform: scale(1.03);
   z-index: 0;
@@ -304,18 +496,16 @@ button:hover {
 
 footer {
   width: 90%;
-  /* position: fixed; */
   margin-top: 50px;
   margin-left: -40px;
   bottom: 0;
   z-index: 999;
   display: grid;
-  grid-template-columns: .75fr .5fr 1fr;
-  background: var(--surface); /* Optional background */
-  /* max-width: fit-content; */
+  grid-template-columns: 0.75fr 0.5fr 1fr;
+  background: var(--surface);
   padding: 20px;
   gap: 20px;
-  box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.2); /* h v blur spread color */
+  box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.2);
   color: var(--text);
 }
 
@@ -326,27 +516,29 @@ footer {
     margin: 0 auto;
     padding: auto;
   }
+  
   .horizontal-menu li {
-    padding: 5px 5px; /* Adds spacing around menu items */
+    padding: 5px 5px;
   }
 
   .brand-header {
     padding: 60px 0 30px 0;
   }
-  
+
   .brand-container h1 {
     font-size: 2.5rem;
   }
 
   .banner {
     width: fit-content;
-    display: flex; /* Hide an element on small screens */
+    display: flex;
     flex-wrap: wrap;
     flex-direction: column-reverse;
     justify-items: baseline;
     align-items: flex-start;
     max-width: 90%;
   }
+  
   .banner-image {
     width: 90vw;
   }
@@ -357,14 +549,18 @@ footer {
     gap: 5px;
     padding: 5px;
   }
-  
+
+  .card__images {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
   .email-div {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
 
-  .footer {
+  footer {
     display: grid;
     position: relative;
     grid-template-columns: 1fr;
