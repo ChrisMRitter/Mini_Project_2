@@ -1,4 +1,4 @@
-# mini-project-01-spring2026
+# mini-project-02-spring2026
 
 # Steamé : The Luxury Gaming Destination
 ## Brandon Foshe and Chris Ritter
