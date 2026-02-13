@@ -493,7 +493,6 @@ wishlistList?.addEventListener("dragover", (e) => {
   renderWishlist();
 });
 
-/* Hook buttons in cards */
 document.addEventListener("click", (e) => {
   const cartBtn = e.target.closest(".add-to-cart");
   if (cartBtn) {
@@ -516,7 +515,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-/* Image slider: left/right arrows inside expanded card */
 document.addEventListener("click", (e) => {
   const prev = e.target.closest("[data-prev]");
   const next = e.target.closest("[data-next]");
