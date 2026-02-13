@@ -44,12 +44,22 @@ p {
   font-size: 3rem;
 }
 
+.title-font {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 3rem;
+  margin-left: -80px;
+}
+
 .secondary-font {
   font-family: "Manrope", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-size: 1.1rem;
+  margin-left: -40px;
 }
 
 .logo {
@@ -192,6 +202,7 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 160px;
 }
 
 .nav-item {
@@ -255,7 +266,6 @@ p {
   overflow: hidden;
   display: none;
   z-index: 1000;
-
   font-size: 14px;
   line-height: 1.25;
 }
@@ -462,6 +472,7 @@ p {
 }
 
 .card--expanded .card__content {
+  padding-top: calc(var(--nav-height) + 44px);
   border-radius: 0;
   position: fixed;
   top: 0;
@@ -472,7 +483,6 @@ p {
   justify-content: flex-start;
   align-items: flex-start;
   overflow: auto;
-  padding-top: calc(var(--nav-height) + 26px);
 }
 
 .card__user-image {
@@ -545,6 +555,11 @@ p {
 .card--expanded .card__user-info {
   align-items: flex-start;
   gap: 2px 0;
+}
+
+.card__subtitle {
+  font-size: 14px;
+  opacity: 0.7;
 }
 
 .card__user-links {
@@ -652,8 +667,10 @@ button:hover {
 
 .news-letter-container {
   position: relative;
+  margin-left: -40px;
+  margin-top: 60px;
   isolation: isolate;
-  width: 100%;
+  width: 90%;
   height: 600px;
   color: var(--text);
   padding: 20px;
@@ -683,6 +700,8 @@ button:hover {
 .news-letter-container > * {
   position: relative;
   z-index: 1;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .brand-header {
@@ -696,6 +715,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   border-bottom: 3px solid var(--special-color);
+  margin-left: -40px;
 }
 
 .brand-container {
@@ -726,15 +746,15 @@ button:hover {
 }
 
 footer {
-  width: 99%;
-  /* position: fixed; */
+  width: 90%;
+  margin-top: 50px;
+  margin-left: -40px;
   bottom: 0;
   z-index: 999;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  background: var(--surface); /* Optional background */
-  /* max-width: fit-content; */
-  padding: 40px;
+  grid-template-columns: 0.75fr 0.5fr 1fr;
+  background: var(--surface);
+  padding: 20px;
   gap: 20px;
   box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.2); /* h v blur spread color */
   color: var(--text);
@@ -775,7 +795,7 @@ footer {
 
   .cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 5px;
     padding: 5px;
   }

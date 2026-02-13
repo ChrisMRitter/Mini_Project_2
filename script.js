@@ -262,95 +262,95 @@ function cleanup() {
   finalProperties = []
 }
 
-/***********************
- *      Start Here     *
- ***********************/
-
 setup()
 
 const state = {
   cart: [],
   wishlist: []
-};
+}
 
-const $ = (sel) => document.querySelector(sel);
+const $ = (sel) => document.querySelector(sel)
 
-const cartToggle = $("#cartToggle");
-const cartDropdown = $("#cartDropdown");
-const cartClose = $("#cartClose");
-const cartCount = $("#cartCount");
-const cartList = $("#cartList");
-const cartTotal = $("#cartTotal");
+const cartToggle = $('#cartToggle')
+const cartDropdown = $('#cartDropdown')
+const cartClose = $('#cartClose')
+const cartCount = $('#cartCount')
+const cartList = $('#cartList')
+const cartTotal = $('#cartTotal')
 
-const wishlistToggle = $("#wishlistToggle");
-const wishlistDropdown = $("#wishlistDropdown");
-const wishlistClose = $("#wishlistClose");
-const wishlistCount = $("#wishlistCount");
-const wishlistList = $("#wishlistList");
+const wishlistToggle = $('#wishlistToggle')
+const wishlistDropdown = $('#wishlistDropdown')
+const wishlistClose = $('#wishlistClose')
+const wishlistCount = $('#wishlistCount')
+const wishlistList = $('#wishlistList')
 
 function money(n) {
-  return `$${n.toFixed(2)}`;
+  return `$${n.toFixed(2)}`
 }
 
 function openDropdown(dd, toggleBtn) {
-  dd.classList.add("is-open");
-  dd.setAttribute("aria-hidden", "false");
-  toggleBtn.setAttribute("aria-expanded", "true");
+  if (!dd || !toggleBtn) return
+  dd.classList.add('is-open')
+  dd.setAttribute('aria-hidden', 'false')
+  toggleBtn.setAttribute('aria-expanded', 'true')
 }
 
 function closeDropdown(dd, toggleBtn) {
-  dd.classList.remove("is-open");
-  dd.setAttribute("aria-hidden", "true");
-  toggleBtn.setAttribute("aria-expanded", "false");
+  if (!dd || !toggleBtn) return
+  dd.classList.remove('is-open')
+  dd.setAttribute('aria-hidden', 'true')
+  toggleBtn.setAttribute('aria-expanded', 'false')
 }
 
 function closeAllDropdowns() {
-  closeDropdown(cartDropdown, cartToggle);
-  closeDropdown(wishlistDropdown, wishlistToggle);
+  closeDropdown(cartDropdown, cartToggle)
+  closeDropdown(wishlistDropdown, wishlistToggle)
 }
 
-cartToggle?.addEventListener("click", (e) => {
-  e.stopPropagation();
-  const isOpen = cartDropdown.classList.contains("is-open");
-  closeAllDropdowns();
-  if (!isOpen) openDropdown(cartDropdown, cartToggle);
-});
+cartToggle?.addEventListener('click', (e) => {
+  e.stopPropagation()
+  const isOpen = cartDropdown?.classList.contains('is-open')
+  closeAllDropdowns()
+  if (!isOpen) openDropdown(cartDropdown, cartToggle)
+})
 
-wishlistToggle?.addEventListener("click", (e) => {
-  e.stopPropagation();
-  const isOpen = wishlistDropdown.classList.contains("is-open");
-  closeAllDropdowns();
-  if (!isOpen) openDropdown(wishlistDropdown, wishlistToggle);
-});
+wishlistToggle?.addEventListener('click', (e) => {
+  e.stopPropagation()
+  const isOpen = wishlistDropdown?.classList.contains('is-open')
+  closeAllDropdowns()
+  if (!isOpen) openDropdown(wishlistDropdown, wishlistToggle)
+})
 
-cartClose?.addEventListener("click", (e) => {
-  e.stopPropagation();
-  closeDropdown(cartDropdown, cartToggle);
-});
+cartClose?.addEventListener('click', (e) => {
+  e.stopPropagation()
+  closeDropdown(cartDropdown, cartToggle)
+})
 
-wishlistClose?.addEventListener("click", (e) => {
-  e.stopPropagation();
-  closeDropdown(wishlistDropdown, wishlistToggle);
-});
+wishlistClose?.addEventListener('click', (e) => {
+  e.stopPropagation()
+  closeDropdown(wishlistDropdown, wishlistToggle)
+})
 
-document.addEventListener("click", () => {
-  closeAllDropdowns();
-});
+document.addEventListener('click', () => {
+  closeAllDropdowns()
+})
 
-cartDropdown?.addEventListener("click", (e) => e.stopPropagation());
-wishlistDropdown?.addEventListener("click", (e) => e.stopPropagation());
+cartDropdown?.addEventListener('click', (e) => e.stopPropagation())
+wishlistDropdown?.addEventListener('click', (e) => e.stopPropagation())
 
 function renderCart() {
-  cartCount.textContent = String(state.cart.reduce((sum, it) => sum + it.qty, 0));
-  cartList.innerHTML = "";
+  if (!cartCount || !cartList || !cartTotal) return
 
-  let total = 0;
+  cartCount.textContent = String(state.cart.reduce((sum, it) => sum + it.qty, 0))
+  cartList.innerHTML = ''
+
+  let total = 0
 
   state.cart.forEach((item, idx) => {
-    total += item.price * item.qty;
+    total += item.price * item.qty
 
-    const li = document.createElement("li");
-    li.className = "dd-item";
+    const li = document.createElement('li')
+    li.className = 'dd-item'
     li.innerHTML = `
       <div>
         <div class="dd-item__title">${item.title}</div>
@@ -361,75 +361,75 @@ function renderCart() {
         <button class="dd-remove" type="button" data-cart-inc="${idx}">+</button>
         <button class="dd-remove" type="button" data-cart-remove="${idx}">✕</button>
       </div>
-    `;
-    cartList.appendChild(li);
-  });
+    `
+    cartList.appendChild(li)
+  })
 
-  cartTotal.textContent = money(total);
+  cartTotal.textContent = money(total)
 }
-
-function decCart(index) {
-  const item = state.cart[index];
-  if (!item) return;
-  item.qty -= 1;
-  if (item.qty <= 0) state.cart.splice(index, 1);
-  renderCart();
-}
-
-function incCart(index) {
-  const item = state.cart[index];
-  if (!item) return;
-  item.qty += 1;
-  renderCart();
-}
-
-cartList?.addEventListener("click", (e) => {
-  const dec = e.target.closest("[data-cart-dec]");
-  if (dec) {
-    decCart(parseInt(dec.dataset.cartDec, 10));
-    return;
-  }
-
-  const inc = e.target.closest("[data-cart-inc]");
-  if (inc) {
-    incCart(parseInt(inc.dataset.cartInc, 10));
-    return;
-  }
-
-  const rm = e.target.closest("[data-cart-remove]");
-  if (rm) {
-    removeFromCart(parseInt(rm.dataset.cartRemove, 10));
-  }
-});
 
 function addToCart(title, price) {
-  const existing = state.cart.find((x) => x.title === title);
-  if (existing) existing.qty += 1;
-  else state.cart.push({ title, price, qty: 1 });
-
-  renderCart();
+  const existing = state.cart.find((x) => x.title === title)
+  if (existing) existing.qty += 1
+  else state.cart.push({ title, price, qty: 1 })
+  renderCart()
 }
 
 function removeFromCart(index) {
-  state.cart.splice(index, 1);
-  renderCart();
+  if (Number.isNaN(index) || index < 0 || index >= state.cart.length) return
+  state.cart.splice(index, 1)
+  renderCart()
 }
 
-cartList?.addEventListener("click", (e) => {
-  const btn = e.target.closest("[data-cart-remove]");
-  if (!btn) return;
-  removeFromCart(parseInt(btn.dataset.cartRemove, 10));
-});
+function decCart(index) {
+  const item = state.cart[index]
+  if (!item) return
+  item.qty -= 1
+  if (item.qty <= 0) state.cart.splice(index, 1)
+  renderCart()
+}
+
+function incCart(index) {
+  const item = state.cart[index]
+  if (!item) return
+  item.qty += 1
+  renderCart()
+}
+
+cartList?.addEventListener('click', (e) => {
+  const dec = e.target.closest('[data-cart-dec]')
+  if (dec) {
+    e.stopPropagation()
+    decCart(parseInt(dec.dataset.cartDec, 10))
+    return
+  }
+
+  const inc = e.target.closest('[data-cart-inc]')
+  if (inc) {
+    e.stopPropagation()
+    incCart(parseInt(inc.dataset.cartInc, 10))
+    return
+  }
+
+  const rm = e.target.closest('[data-cart-remove]')
+  if (rm) {
+    e.stopPropagation()
+    removeFromCart(parseInt(rm.dataset.cartRemove, 10))
+    return
+  }
+})
 
 function renderWishlist() {
-  wishlistCount.textContent = String(state.wishlist.length);
-  wishlistList.innerHTML = "";
+  if (!wishlistCount || !wishlistList) return
+
+  wishlistCount.textContent = String(state.wishlist.length)
+  wishlistList.innerHTML = ''
 
   state.wishlist.forEach((item, idx) => {
-    const li = document.createElement("li");
-    li.className = "dd-item";
-    li.setAttribute("draggable", "true");
-    li.dataset.wishIndex = String(idx);
+    const li = document.createElement('li')
+    li.className = 'dd-item'
+    li.setAttribute('draggable', 'true')
+    li.dataset.wishIndex = String(idx)
 
     li.innerHTML = `
       <div>
@@ -437,108 +437,109 @@ function renderWishlist() {
         <div class="dd-item__meta">${money(item.price)}</div>
       </div>
       <div class="dd-item__actions">
-        <button class="dd-remove" type="button" data-wish-remove="${idx}">Remove</button>
+        <button class="dd-remove" type="button" data-wish-remove="${idx}">✕</button>
       </div>
-    `;
+    `
 
-    wishlistList.appendChild(li);
-  });
+    wishlistList.appendChild(li)
+  })
 }
 
 function addToWishlist(title, price) {
-  if (state.wishlist.some((x) => x.title === title)) return;
-  state.wishlist.push({ title, price });
-  renderWishlist();
+  if (state.wishlist.some((x) => x.title === title)) return
+  state.wishlist.push({ title, price })
+  renderWishlist()
 }
 
 function removeFromWishlist(index) {
-  state.wishlist.splice(index, 1);
-  renderWishlist();
+  if (Number.isNaN(index) || index < 0 || index >= state.wishlist.length) return
+  state.wishlist.splice(index, 1)
+  renderWishlist()
 }
 
-wishlistList?.addEventListener("click", (e) => {
-  const btn = e.target.closest("[data-wish-remove]");
-  if (!btn) return;
-  removeFromWishlist(parseInt(btn.dataset.wishRemove, 10));
-});
+wishlistList?.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-wish-remove]')
+  if (!btn) return
+  e.stopPropagation()
+  removeFromWishlist(parseInt(btn.dataset.wishRemove, 10))
+})
 
-/* Drag & drop sorting (wishlist) */
-let dragFrom = null;
+let dragFrom = null
 
-wishlistList?.addEventListener("dragstart", (e) => {
-  const li = e.target.closest(".dd-item");
-  if (!li) return;
-  dragFrom = parseInt(li.dataset.wishIndex, 10);
-  li.classList.add("dragging");
-});
+wishlistList?.addEventListener('dragstart', (e) => {
+  const li = e.target.closest('.dd-item')
+  if (!li) return
+  dragFrom = parseInt(li.dataset.wishIndex, 10)
+  li.classList.add('dragging')
+})
 
-wishlistList?.addEventListener("dragend", (e) => {
-  const li = e.target.closest(".dd-item");
-  if (li) li.classList.remove("dragging");
-  dragFrom = null;
-});
+wishlistList?.addEventListener('dragend', (e) => {
+  const li = e.target.closest('.dd-item')
+  if (li) li.classList.remove('dragging')
+  dragFrom = null
+})
 
-wishlistList?.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  const over = e.target.closest(".dd-item");
-  if (!over || dragFrom === null) return;
+wishlistList?.addEventListener('dragover', (e) => {
+  e.preventDefault()
+  const over = e.target.closest('.dd-item')
+  if (!over || dragFrom === null) return
 
-  const dragTo = parseInt(over.dataset.wishIndex, 10);
-  if (dragTo === dragFrom) return;
+  const dragTo = parseInt(over.dataset.wishIndex, 10)
+  if (dragTo === dragFrom) return
 
-  const moved = state.wishlist.splice(dragFrom, 1)[0];
-  state.wishlist.splice(dragTo, 0, moved);
-  dragFrom = dragTo;
+  const moved = state.wishlist.splice(dragFrom, 1)[0]
+  state.wishlist.splice(dragTo, 0, moved)
+  dragFrom = dragTo
 
-  renderWishlist();
-});
+  renderWishlist()
+})
 
-document.addEventListener("click", (e) => {
-  const cartBtn = e.target.closest(".add-to-cart");
+document.addEventListener('click', (e) => {
+  const cartBtn = e.target.closest('.add-to-cart')
   if (cartBtn) {
-    e.preventDefault();
-    e.stopPropagation();
-    const title = cartBtn.dataset.title;
-    const price = parseFloat(cartBtn.dataset.price);
-    if (title && !Number.isNaN(price)) addToCart(title, price);
-    return;
+    e.preventDefault()
+    e.stopPropagation()
+    const title = cartBtn.dataset.title
+    const price = parseFloat(cartBtn.dataset.price)
+    if (title && !Number.isNaN(price)) addToCart(title, price)
+    return
   }
 
-  const wishBtn = e.target.closest(".add-to-wishlist");
+  const wishBtn = e.target.closest('.add-to-wishlist')
   if (wishBtn) {
-    e.preventDefault();
-    e.stopPropagation();
-    const title = wishBtn.dataset.title;
-    const price = parseFloat(wishBtn.dataset.price);
-    if (title && !Number.isNaN(price)) addToWishlist(title, price);
-    return;
+    e.preventDefault()
+    e.stopPropagation()
+    const title = wishBtn.dataset.title
+    const price = parseFloat(wishBtn.dataset.price)
+    if (title && !Number.isNaN(price)) addToWishlist(title, price)
+    return
   }
-});
+})
 
-document.addEventListener("click", (e) => {
-  const prev = e.target.closest("[data-prev]");
-  const next = e.target.closest("[data-next]");
-  if (!prev && !next) return;
+document.addEventListener('click', (e) => {
+  const prev = e.target.closest('[data-prev]')
+  const next = e.target.closest('[data-next]')
+  if (!prev && !next) return
 
-  e.preventDefault();
-  e.stopPropagation();
+  e.preventDefault()
+  e.stopPropagation()
 
-  const slider = e.target.closest("[data-slider]");
-  if (!slider) return;
+  const slider = e.target.closest('[data-slider]')
+  if (!slider) return
 
-  const imgs = Array.from(slider.querySelectorAll(".slider-img"));
-  if (imgs.length === 0) return;
+  const imgs = Array.from(slider.querySelectorAll('.slider-img'))
+  if (imgs.length === 0) return
 
-  let activeIndex = imgs.findIndex((img) => img.classList.contains("is-active"));
-  if (activeIndex === -1) activeIndex = 0;
+  let activeIndex = imgs.findIndex((img) => img.classList.contains('is-active'))
+  if (activeIndex === -1) activeIndex = 0
 
-  imgs[activeIndex].classList.remove("is-active");
+  imgs[activeIndex].classList.remove('is-active')
 
-  if (prev) activeIndex = (activeIndex - 1 + imgs.length) % imgs.length;
-  if (next) activeIndex = (activeIndex + 1) % imgs.length;
+  if (prev) activeIndex = (activeIndex - 1 + imgs.length) % imgs.length
+  if (next) activeIndex = (activeIndex + 1) % imgs.length
 
-  imgs[activeIndex].classList.add("is-active");
-});
+  imgs[activeIndex].classList.add('is-active')
+})
 
-renderCart();
-renderWishlist();
+renderCart()
+renderWishlist()
