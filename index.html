@@ -19,18 +19,76 @@
           <li><a href="">Home</a></li>
           <li><a href="">Shop</a></li>
           <li><a href="">About Us</a></li>
-          <li>
-            <a href=""><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+
+          <li class="nav-item">
+            <button
+              class="nav-icon-btn"
+              id="wishlistToggle"
+              type="button"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-heart"></i>
+              <span>Wishlist</span>
+              <span class="badge" id="wishlistCount">0</span>
+            </button>
+
+            <div class="dropdown" id="wishlistDropdown" aria-hidden="true">
+              <div class="dropdown__header">
+                <span class="dropdown__title">Wishlist</span>
+                <button class="dropdown__close" id="wishlistClose" type="button">
+                  ✕
+                </button>
+              </div>
+
+              <ul class="dropdown__list" id="wishlistList"></ul>
+              <div class="dropdown__footer">
+                <small class="dropdown__hint">Drag items to reorder.</small>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <button
+              class="nav-icon-btn"
+              id="cartToggle"
+              type="button"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span>Cart</span>
+              <span class="badge" id="cartCount">0</span>
+            </button>
+
+            <div class="dropdown" id="cartDropdown" aria-hidden="true">
+              <div class="dropdown__header">
+                <span class="dropdown__title">Cart</span>
+                <button class="dropdown__close" id="cartClose" type="button">
+                  ✕
+                </button>
+              </div>
+
+              <ul class="dropdown__list" id="cartList"></ul>
+
+              <div class="dropdown__footer">
+                <div class="dropdown__row">
+                  <span>Total</span>
+                  <strong id="cartTotal">$0.00</strong>
+                </div>
+                <button class="dropdown__checkout" type="button">Checkout</button>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
     </section>
+
     <header class="brand-header">
       <div class="brand-container">
         <img class="logo-image" src="../assets/Steame.png" alt="logo" />
         <h1 class="primary-font">Steam<span class="special-color">é</span></h1>
       </div>
     </header>
+
     <section class="banner">
       <div class="hero">
         <p class="secondary-font bottom-text">
@@ -87,20 +145,58 @@
               <h3 class="primary-font" style="font-size: 1.1rem">
                 Gameplay Images
               </h3>
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/250x250?fps"
-                alt=""
-              />
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/300x300?sci-fi"
-                alt=""
-              />
+
+              <div class="image-slider" data-slider>
+                <button
+                  class="img-nav img-nav--left"
+                  type="button"
+                  data-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <img
+                  class="card__image slider-img is-active"
+                  src="https://source.unsplash.com/featured/250x250?fps"
+                  alt=""
+                />
+                <img
+                  class="card__image slider-img"
+                  src="https://source.unsplash.com/featured/300x300?sci-fi"
+                  alt=""
+                />
+
+                <button
+                  class="img-nav img-nav--right"
+                  type="button"
+                  data-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
               <h4 class="primary-font" style="font-size: 1rem">
                 Price: $69.99
               </h4>
-              <button>Add to Cart</button>
+
+              <button
+                class="add-to-cart"
+                type="button"
+                data-title="Shelf-Life 2"
+                data-price="69.99"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="add-to-wishlist"
+                type="button"
+                data-title="Shelf-Life 2"
+                data-price="69.99"
+              >
+                Add to Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -141,20 +237,58 @@
               <h3 class="primary-font" style="font-size: 1.1rem">
                 Gameplay Images
               </h3>
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/250x250?esports"
-                alt=""
-              />
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/300x300?gaming"
-                alt=""
-              />
+
+              <div class="image-slider" data-slider>
+                <button
+                  class="img-nav img-nav--left"
+                  type="button"
+                  data-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <img
+                  class="card__image slider-img is-active"
+                  src="https://source.unsplash.com/featured/250x250?esports"
+                  alt=""
+                />
+                <img
+                  class="card__image slider-img"
+                  src="https://source.unsplash.com/featured/300x300?gaming"
+                  alt=""
+                />
+
+                <button
+                  class="img-nav img-nav--right"
+                  type="button"
+                  data-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
               <h4 class="primary-font" style="font-size: 1rem">
                 Price: $69.99
               </h4>
-              <button>Add to Cart</button>
+
+              <button
+                class="add-to-cart"
+                type="button"
+                data-title="Counter Pike Source"
+                data-price="69.99"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="add-to-wishlist"
+                type="button"
+                data-title="Counter Pike Source"
+                data-price="69.99"
+              >
+                Add to Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -195,20 +329,58 @@
               <h3 class="primary-font" style="font-size: 1.1rem">
                 Gameplay Images``
               </h3>
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/250x250?fight"
-                alt=""
-              />
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/300x300?arena"
-                alt=""
-              />
+
+              <div class="image-slider" data-slider>
+                <button
+                  class="img-nav img-nav--left"
+                  type="button"
+                  data-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <img
+                  class="card__image slider-img is-active"
+                  src="https://source.unsplash.com/featured/250x250?fight"
+                  alt=""
+                />
+                <img
+                  class="card__image slider-img"
+                  src="https://source.unsplash.com/featured/300x300?arena"
+                  alt=""
+                />
+
+                <button
+                  class="img-nav img-nav--right"
+                  type="button"
+                  data-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
               <h4 class="primary-font" style="font-size: 1rem">
                 Price: $69.99
               </h4>
-              <button>Add to Cart</button>
+
+              <button
+                class="add-to-cart"
+                type="button"
+                data-title="Mortal 2"
+                data-price="69.99"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="add-to-wishlist"
+                type="button"
+                data-title="Mortal 2"
+                data-price="69.99"
+              >
+                Add to Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -249,20 +421,58 @@
               <h3 class="primary-font" style="font-size: 1.1rem">
                 Gameplay Images
               </h3>
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/250x250?multiplayer"
-                alt=""
-              />
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/300x300?team"
-                alt=""
-              />
+
+              <div class="image-slider" data-slider>
+                <button
+                  class="img-nav img-nav--left"
+                  type="button"
+                  data-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <img
+                  class="card__image slider-img is-active"
+                  src="https://source.unsplash.com/featured/250x250?multiplayer"
+                  alt=""
+                />
+                <img
+                  class="card__image slider-img"
+                  src="https://source.unsplash.com/featured/300x300?team"
+                  alt=""
+                />
+
+                <button
+                  class="img-nav img-nav--right"
+                  type="button"
+                  data-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
               <h4 class="primary-font" style="font-size: 1rem">
                 Price: $69.99
               </h4>
-              <button>Add to Cart</button>
+
+              <button
+                class="add-to-cart"
+                type="button"
+                data-title="Team Tortoise 2"
+                data-price="69.99"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="add-to-wishlist"
+                type="button"
+                data-title="Team Tortoise 2"
+                data-price="69.99"
+              >
+                Add to Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -303,20 +513,58 @@
               <h3 class="primary-font" style="font-size: 1.1rem">
                 Gameplay Images``
               </h3>
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/250x250?survival"
-                alt=""
-              />
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/300x300?co-op"
-                alt=""
-              />
+
+              <div class="image-slider" data-slider>
+                <button
+                  class="img-nav img-nav--left"
+                  type="button"
+                  data-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <img
+                  class="card__image slider-img is-active"
+                  src="https://source.unsplash.com/featured/250x250?survival"
+                  alt=""
+                />
+                <img
+                  class="card__image slider-img"
+                  src="https://source.unsplash.com/featured/300x300?co-op"
+                  alt=""
+                />
+
+                <button
+                  class="img-nav img-nav--right"
+                  type="button"
+                  data-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
               <h4 class="primary-font" style="font-size: 1rem">
                 Price: $69.99
               </h4>
-              <button>Add to Cart</button>
+
+              <button
+                class="add-to-cart"
+                type="button"
+                data-title="Left 4 Bread"
+                data-price="69.99"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="add-to-wishlist"
+                type="button"
+                data-title="Left 4 Bread"
+                data-price="69.99"
+              >
+                Add to Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -357,20 +605,58 @@
               <h3 class="primary-font" style="font-size: 1.1rem">
                 Gameplay Images
               </h3>
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/250x250?sandbox"
-                alt=""
-              />
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/300x300?physics"
-                alt=""
-              />
+
+              <div class="image-slider" data-slider>
+                <button
+                  class="img-nav img-nav--left"
+                  type="button"
+                  data-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <img
+                  class="card__image slider-img is-active"
+                  src="https://source.unsplash.com/featured/250x250?sandbox"
+                  alt=""
+                />
+                <img
+                  class="card__image slider-img"
+                  src="https://source.unsplash.com/featured/300x300?physics"
+                  alt=""
+                />
+
+                <button
+                  class="img-nav img-nav--right"
+                  type="button"
+                  data-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
               <h4 class="primary-font" style="font-size: 1rem">
                 Price: $69.99
               </h4>
-              <button>Add to Cart</button>
+
+              <button
+                class="add-to-cart"
+                type="button"
+                data-title="Garry's Cod"
+                data-price="69.99"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="add-to-wishlist"
+                type="button"
+                data-title="Garry's Cod"
+                data-price="69.99"
+              >
+                Add to Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -411,20 +697,58 @@
               <h3 class="primary-font" style="font-size: 1.1rem">
                 Gameplay Images
               </h3>
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/250x250?cozy"
-                alt=""
-              />
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/300x300?puzzle"
-                alt=""
-              />
+
+              <div class="image-slider" data-slider>
+                <button
+                  class="img-nav img-nav--left"
+                  type="button"
+                  data-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <img
+                  class="card__image slider-img is-active"
+                  src="https://source.unsplash.com/featured/250x250?cozy"
+                  alt=""
+                />
+                <img
+                  class="card__image slider-img"
+                  src="https://source.unsplash.com/featured/300x300?puzzle"
+                  alt=""
+                />
+
+                <button
+                  class="img-nav img-nav--right"
+                  type="button"
+                  data-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
               <h4 class="primary-font" style="font-size: 1rem">
                 Price: $69.99
               </h4>
-              <button>Add to Cart</button>
+
+              <button
+                class="add-to-cart"
+                type="button"
+                data-title="The Orange Socks"
+                data-price="69.99"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="add-to-wishlist"
+                type="button"
+                data-title="The Orange Socks"
+                data-price="69.99"
+              >
+                Add to Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -465,20 +789,58 @@
               <h3 class="primary-font" style="font-size: 1.1rem">
                 Gameplay Images``
               </h3>
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/250x250?space"
-                alt=""
-              />
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/300x300?robot"
-                alt=""
-              />
+
+              <div class="image-slider" data-slider>
+                <button
+                  class="img-nav img-nav--left"
+                  type="button"
+                  data-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <img
+                  class="card__image slider-img is-active"
+                  src="https://source.unsplash.com/featured/250x250?space"
+                  alt=""
+                />
+                <img
+                  class="card__image slider-img"
+                  src="https://source.unsplash.com/featured/300x300?robot"
+                  alt=""
+                />
+
+                <button
+                  class="img-nav img-nav--right"
+                  type="button"
+                  data-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
               <h4 class="primary-font" style="font-size: 1rem">
                 Price: $69.99
               </h4>
-              <button>Add to Cart</button>
+
+              <button
+                class="add-to-cart"
+                type="button"
+                data-title="Quota 2"
+                data-price="69.99"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="add-to-wishlist"
+                type="button"
+                data-title="Quota 2"
+                data-price="69.99"
+              >
+                Add to Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -521,20 +883,58 @@
               <h3 class="primary-font" style="font-size: 1.1rem">
                 Gameplay Images
               </h3>
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/250x250?store"
-                alt=""
-              />
-              <img
-                class="card__image"
-                src="https://source.unsplash.com/featured/300x300?shopping"
-                alt=""
-              />
+
+              <div class="image-slider" data-slider>
+                <button
+                  class="img-nav img-nav--left"
+                  type="button"
+                  data-prev
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <img
+                  class="card__image slider-img is-active"
+                  src="https://source.unsplash.com/featured/250x250?store"
+                  alt=""
+                />
+                <img
+                  class="card__image slider-img"
+                  src="https://source.unsplash.com/featured/300x300?shopping"
+                  alt=""
+                />
+
+                <button
+                  class="img-nav img-nav--right"
+                  type="button"
+                  data-next
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
               <h4 class="primary-font" style="font-size: 1rem">
                 Price: $15.99
               </h4>
-              <button>Add to Cart</button>
+
+              <button
+                class="add-to-cart"
+                type="button"
+                data-title="$15 Costco Giftcard (The Game)"
+                data-price="15.99"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="add-to-wishlist"
+                type="button"
+                data-title="$15 Costco Giftcard (The Game)"
+                data-price="15.99"
+              >
+                Add to Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -558,6 +958,7 @@
         <button>Subscribe</button>
       </div>
     </section>
+
     <footer>
       <div>
         <img
@@ -617,6 +1018,8 @@
         />
       </div>
     </footer>
+
     <script type="module" src="./script.js"></script>
   </body>
 </html>
+
