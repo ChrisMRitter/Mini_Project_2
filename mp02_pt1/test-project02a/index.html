@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Basics</title>
+  </head>
+  <body>
+    <!-- <h1>Hello World</h1>
+    <h2 id="sumData"></h2>
+    <h2 id="prodData"></h2>
+    <h2 id="fact"></h2> -->
+    <div>
+      <h1>Factorial Generator</h1>
+      <h4>Enter a number:</h4>
+      <input type="text" id="numberEntry" placeholder="0" />
+      <button onclick="getResult()">get factorial</button>
+      <p>Your output will appear here: <strong id="output"></strong></p>
+    </div>
+    <hr />
+    <div>
+      <h1>Arithmetic Series Generator</h1>
+      <h4>First term, a:</h4>
+      <input type="text" name="" id="a" />
+      <br />
+      <h4>Difference, d:</h4>
+      <input type="text" id="d" />
+      <br />
+      <h4>Series Length, n</h4>
+      <input type="text" id="n" />
+      <br />
+      <br />
+      <button id="seriesGenerator">Generate Series</button>
+      <div id="step-by-step"></div>
+    </div>
+    <hr />
+    <div>
+      <h1>Palindrome Checker</h1>
+      <h4>Enter a string:</h4>
+      <input type="text" id="palInput" placeholder="racecar" />
+      <button id="palBtn">Check Palindrome</button>
+      <p>
+        Result:
+        <strong id="palMsg"></strong>
+      </p>
+    </div>
+    <script src="./factorialRelatedScript.js"></script>
+    <script src="./seriesRelatedScript.js"></script>
+    <script src="./palindromeRelatedScript.js"></script>
+  </body>
+</html>
